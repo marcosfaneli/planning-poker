@@ -15,6 +15,8 @@ export class Room {
   }
 
   ingress(member: Member) {
+    if (!this.open) throw new Error("Room is closed")
+
     this.members.push(member)
   }
 
