@@ -1,7 +1,7 @@
 import { RequestMapper } from "../application/request-mapper"
 import { RoomRepository } from "../infra/room-repository"
 
-export class NewRoundUseCase {
+export class IngressRoomUseCase {
   constructor(private roomRepository: RoomRepository)
   execute(request: any) {
     const room = this.roomRepository.getRoomById(request.room)
