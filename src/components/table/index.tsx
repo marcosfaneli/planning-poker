@@ -43,8 +43,7 @@ export function TableComponent() {
 
     const turn = () => {
         setTurned(true)
-        const res = cards
-            .reduce((acc: CardResult[], curr: CardInformation) => {
+        const res = cards.reduce((acc: CardResult[], curr: CardInformation) => {
                 const card = acc.find(c => c.index === curr.value)
 
                 if (card) {
@@ -71,8 +70,8 @@ export function TableComponent() {
             <ListCards>
                 {cards.map((card, index) => <CardComponent key={index} card={card} turned={turned}/>)}
             </ListCards>
-            {!turned && <Button onClick={turn}>Toggle</Button>}
-            {turned && <Button onClick={newRound}>New Turn</Button>}
+            {!turned && <Button onClick={turn}>Turn</Button>}
+            {turned && <Button onClick={newRound}>New Round</Button>}
             <ScoreboardCardComponent cards={results} />
         </Table>
     )

@@ -1,10 +1,15 @@
-import { TableComponent } from './components/table'
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HomePage } from './pages/home';
+import { Poker } from './pages/poker'
 
 function App() {
   return (
-    <div className="App">
-      <TableComponent />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/poker" element={<Poker/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
