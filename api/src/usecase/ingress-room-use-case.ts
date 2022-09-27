@@ -1,14 +1,14 @@
 import { RequestMapper } from "../application/request-mapper"
-import { RoomRepository } from "../infra/room-repository"
+import { RoomRepository } from "../infra/repository/room-repository"
 
 export class IngressRoomUseCase {
-  constructor(private roomRepository: RoomRepository)
+  constructor(private roomRepository: RoomRepository) { }
   execute(request: any) {
     const room = this.roomRepository.getRoomById(request.room)
 
     if (!room) throw new Error("Room not found")
 
-    const member = room.getMemberById(request.member)
+    if (room.getMemberById(request.member)) return
 
     const member = RequestMapper.toMember(request)
 

@@ -1,8 +1,8 @@
 import { RequestMapper } from "../application/request-mapper"
-import { RoomRepository } from "../infra/room-repository"
+import { RoomRepository } from "../infra/repository/room-repository"
 
 export class NewRoomUseCase {
-  constructor(private roomRepository: RoomRepository)
+  constructor(private roomRepository: RoomRepository) { }
   execute(request: any) {
     const owner = RequestMapper.extractOwnerRoom(request)
     const room = RequestMapper.toRoom(request, owner)

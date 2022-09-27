@@ -1,7 +1,7 @@
-import { RoomRepository } from "../infra/room-repository"
+import { RoomRepository } from "../infra/repository/room-repository"
 
 export class NewUserEstimateUseCase {
-  constructor(private roomRepository: RoomRepository)
+  constructor(private roomRepository: RoomRepository) { }
   execute(request: any) {
     const room = this.roomRepository.getRoomById(request.room)
 
