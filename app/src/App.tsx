@@ -1,18 +1,20 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { HomePage } from './pages/home'
-import { Poker } from './pages/poker'
-import { PageServer } from './pages/socket'
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RoomContextProvider } from "./contexts/room-context";
+import { CreateRoom } from "./pages/create-room";
+import { Poker } from "./pages/poker";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/poker" element={<Poker />} />
-        <Route path="/server" element={<PageServer />} />
-      </Routes>
-    </BrowserRouter>
+    <RoomContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CreateRoom />} />
+          <Route path="/room/create" element={<CreateRoom />} />
+          <Route path="/room/:id" element={<Poker />} />
+        </Routes>
+      </BrowserRouter>
+    </RoomContextProvider>
   );
 }
 
-export default App
+export default App;
