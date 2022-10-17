@@ -1,10 +1,10 @@
 import { Round } from "./round";
 
 export class Member {
-  constructor(private name){
+  constructor(private name: string){
   }
 
   estimate(round: Round, value: number){
-    round.estimate(this, value)
+    round.newEstimative(this, value)
   }
 }

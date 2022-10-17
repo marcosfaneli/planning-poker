@@ -7,10 +7,10 @@ export class RequestMapper {
   }
 
   static extractOwnerRoom(request: any): Member {
-    return new Member(request.userName)
+    return new Member(request.owner)
   }
 
   static toRoom(request: any, owner: Member): Room {
-    return new Room(owner, request.roomName);
+    return new Room(owner, request.roomName, request.id);
   }
 }

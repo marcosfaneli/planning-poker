@@ -1,22 +1,24 @@
-import { v4 as uuidv4 } from "uuid"
-
 import { Member } from "./member"
 import { Round } from "./round"
 
 export class Room {
-  private id: string;
+  private _id: string
   private rounds: Round[]
   private opened: boolean
   private members: Member[]
   private activeRound: Round | undefined
 
   constructor(private owner: Member, private name: string, id: string) {
-    this.id = uuidv4().toString()
+    this._id = id
     this.rounds = []
     this.members = []
     this.members.push(owner)
     this.opened = true
     this.activeRound = undefined
+  }
+
+  get id() {
+    return this._id;
   }
 
   ingress(member: Member) {

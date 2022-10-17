@@ -1,4 +1,4 @@
-import { Room } from "../domain/room"
+import { Room } from "../../domain/room"
 
 export class RoomRepository {
   private static data: Room[] = []
@@ -13,7 +13,6 @@ export class RoomRepository {
   }
 
   delete(room: Room) {
-    const data = RoomRepository.data.map((r: Room) => r.id !== room.id)
-    RoomRepository.data = data
+    RoomRepository.data = RoomRepository.data.filter((r: Room) => r.id !== room.id)
   }
 }
