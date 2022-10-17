@@ -14,9 +14,14 @@ type Room = {
   id: string;
 };
 
+type NewRoom = {
+  room: string;
+  userName: string;
+};
+
 export type RoomContextType = {
   sendMessage: (msg: string) => void;
-  createRoom: (name: string) => string;
+  createRoom: (newRoom: NewRoom) => string;
   selectRoom: (room: Room) => void;
 };
 
@@ -27,8 +32,12 @@ export const RoomContextProvider = ({ children }: Props) => {
     socket.emit("sending_message", { msg });
   };
 
-  const createRoom = (name: string) => {
-    const room = { id: uuid(), name };
+  const createRoom = (newRoom: NewRoom) => {
+    const room = {
+      id: uuid(),
+      roomName: newRoom.room,
+      owner: newRoom.userName,
+    };
     socket.emit("create_room", { ...room });
     return room.id;
   };

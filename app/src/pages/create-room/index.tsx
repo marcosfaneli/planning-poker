@@ -38,20 +38,37 @@ export function CreateRoom() {
   const { createRoom } = useRoomContext() as RoomContextType;
 
   const [roomName, setRoomName] = React.useState("");
+  const [userName, setUserName] = React.useState("");
 
-  const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRoom = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRoomName(event.target.value);
   };
 
+  const handleChangeUser = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(event.target.value);
+  };
+
   const handleClick = () => {
-    const id = createRoom(roomName);
+    const id = createRoom({ room: roomName, userName });
     navigate(`/room/${id}`);
   };
 
   return (
     <Home>
-      <div>Sala</div>
-      <Input type="text" value={roomName} onChange={handleChangeName} />
+      <label htmlFor="user">User</label>
+      <Input
+        name="user"
+        type="text"
+        value={userName}
+        onChange={handleChangeUser}
+      />
+      <label htmlFor="room">Sala</label>
+      <Input
+        name="room"
+        type="text"
+        value={roomName}
+        onChange={handleChangeRoom}
+      />
       <Button onClick={handleClick}>Criar Sala</Button>
     </Home>
   );
